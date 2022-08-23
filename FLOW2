@@ -1,0 +1,113 @@
+[
+    {
+        "id": "77aceda34ebee7fe",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "9226b8faa562d65d",
+        "type": "inject",
+        "z": "77aceda34ebee7fe",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "15",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "15",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 80,
+        "wires": [
+            [
+                "01d2373e1d5f55c1"
+            ]
+        ]
+    },
+    {
+        "id": "18ee9e49252734ad",
+        "type": "debug",
+        "z": "77aceda34ebee7fe",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "01d2373e1d5f55c1",
+        "type": "function",
+        "z": "77aceda34ebee7fe",
+        "name": "Función para Hora y Fecha ",
+        "func": "var date = new Date (msg.payload); //creamos un objeto a partir del payload enviado por timestamp\nmsg.payload=date.toString();\n//cambiamos el payload para que sea una fecha con formato\nreturn msg;\n//regresa el mensaje para que se envie al siguiente nodo",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 80,
+        "wires": [
+            [
+                "18ee9e49252734ad",
+                "6a98a930faaba7e0"
+            ]
+        ]
+    },
+    {
+        "id": "6a98a930faaba7e0",
+        "type": "ui_text",
+        "z": "77aceda34ebee7fe",
+        "group": "d2c4951ccdc7542d",
+        "order": 0,
+        "width": "4",
+        "height": "2",
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 590,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "d2c4951ccdc7542d",
+        "type": "ui_group",
+        "name": "Tiempo",
+        "tab": "a3c9e2271543e307",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a3c9e2271543e307",
+        "type": "ui_tab",
+        "name": "Flow 5",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
